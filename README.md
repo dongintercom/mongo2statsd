@@ -13,4 +13,4 @@ Metrics implemented:
 - `mongodb.opscount.delete`
 - `mongodb.opscount.query`
 - `mongodb.opscount.getmore`
-- <more to come>
+- [more to come]
