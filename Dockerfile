@@ -16,5 +16,4 @@ RUN pip install statsd
 # copy mongo2statsd to container
 COPY . /usr/local/src/mongo2statsd
 
-#TODO move this into a script
-CMD /usr/local/src/mongo-tools/bin/mongostat -h 172.17.0.2 --json | /usr/local/src/mongo2statsd/mongo2statsd.py --statsd-host 172.17.0.3
+ENTRYPOINT ["/usr/local/src/mongo2statsd/docker_entrypoint.py"]
