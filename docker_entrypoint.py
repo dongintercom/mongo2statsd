@@ -14,6 +14,7 @@ def get_args():
     parser.add_argument('--mongo-port', type=str, default='27017')
     parser.add_argument('--statsd-host', type=str, required=True)
     parser.add_argument('--statsd-port', type=str, default='8125')
+    parser.add_argument("--metric-prefix", type=str, default="mongodb")
     return parser.parse_args()
 
 
@@ -30,7 +31,8 @@ def main():
     mongo2statsd_proc = subprocess.Popen(
         (MONGO2STATSD_PATH,
          '--statsd-host', args.statsd_host,
-         '--statsd-port', args.statsd_port),
+         '--statsd-port', args.statsd_port,
+         '--metric-prefix', args.metric_prefix),
         stdin=mongostat_proc.stdout,
         stdout=subprocess.PIPE
     )
